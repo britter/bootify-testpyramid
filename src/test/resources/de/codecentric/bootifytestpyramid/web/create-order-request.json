@@ -1,0 +1,18 @@
+{
+  "deliveryAddress": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "street": "Mainstreet 15",
+    "zip": "64782",
+    "city": "Newton"
+  },
+  "items": [
+    {
+      "name": "Couch",
+      "description": "A cozzy couch",
+      "weight": 20.0,
+      "price": 19.99,
+      "quantity": 1
+    }
+  ]
+}
