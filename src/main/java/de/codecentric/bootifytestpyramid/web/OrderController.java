@@ -54,7 +54,7 @@ public class OrderController {
     }
 
     @GetMapping
-    public ResponseEntity<List<OrderResponse>> getAll(@RequestParam(value = "city", required = false) Optional<String> city) {
+    public ResponseEntity<List<OrderResponse>> getAll(@RequestParam("city") Optional<String> city) {
         List<Order> orders = city.map(orderGateway::findByCity).orElse(orderGateway.findAll());
 
         List<OrderResponse> responses = orders.stream()
