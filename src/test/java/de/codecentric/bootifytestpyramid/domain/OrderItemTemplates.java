@@ -31,7 +31,7 @@ public final class OrderItemTemplates {
     }
 
     public static OrderItem closet() {
-        return couches(1);
+        return closets(1);
     }
 
     public static OrderItem closets(int quanity) {

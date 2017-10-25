@@ -20,8 +20,11 @@ import org.junit.jupiter.api.Test;
 
 import static de.codecentric.bootifytestpyramid.domain.AddressTemplates.johnDoe;
 import static de.codecentric.bootifytestpyramid.domain.OrderItemTemplates.chair;
+import static de.codecentric.bootifytestpyramid.domain.OrderTemplates.bigOrder;
 import static de.codecentric.bootifytestpyramid.domain.OrderTemplates.completeKitchen;
+import static de.codecentric.bootifytestpyramid.domain.OrderTemplates.mediumOrder;
 import static de.codecentric.bootifytestpyramid.domain.OrderTemplates.smallOrder;
+import static de.codecentric.bootifytestpyramid.domain.Price.germanPrice;
 import static java.util.Collections.emptyList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -51,9 +54,32 @@ class OrderTest {
     @Nested
     class Calculations {
 
-        @Test
-        void should_calculate_total_weight() {
-            assertThat(completeKitchen().getTotalWeight()).isEqualTo(new Weight(60));
+        @Nested
+        class TotalWeight {
+
+            @Test
+            void should_calculate_total_weight() {
+                assertThat(completeKitchen().getTotalWeight()).isEqualTo(new Weight(60));
+            }
+        }
+
+        @Nested
+        class DeliveryPrice {
+
+            @Test
+            void should_calculate_fixed_price_for_small_orders() {
+                assertThat(smallOrder().calculateDeliveryPrice()).isEqualTo(germanPrice(19.99));
+            }
+
+            @Test
+            void should_calculate_weight_dependend_price_for_medium_orders() {
+                assertThat(mediumOrder().calculateDeliveryPrice()).isEqualTo(germanPrice(33.50));
+            }
+
+            @Test
+            void should_calculate_add_overweight_price_to_weight_dependend_price_for_big_orders() {
+                assertThat(bigOrder().calculateDeliveryPrice()).isEqualTo(germanPrice(179.99));
+            }
         }
     }
 }
