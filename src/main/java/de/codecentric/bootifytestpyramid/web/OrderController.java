@@ -27,7 +27,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
@@ -35,6 +34,8 @@ import java.util.List;
 import java.util.Optional;
 
 import static java.util.stream.Collectors.toList;
+import static org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder.fromMethodCall;
+import static org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder.on;
 
 @RestController
 @RequestMapping("/orders")
@@ -73,12 +74,10 @@ public class OrderController {
     }
 
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody @Valid final CreateOrderRequest createOrderRequest,
-                                    final UriComponentsBuilder builder) {
+    public ResponseEntity<?> create(@RequestBody @Valid final CreateOrderRequest createOrderRequest) {
         final Order created = orderGateway.createOrder(createOrderRequest.toCommand());
 
-        final URI location = builder
-                .pathSegment("orders", Long.toString(created.getId()))
+        final URI location = fromMethodCall(on(OrderController.class).getOne(created.getId()))
                 .build()
                 .toUri();
 
