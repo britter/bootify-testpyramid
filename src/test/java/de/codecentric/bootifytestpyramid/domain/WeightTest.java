@@ -23,6 +23,7 @@ import java.math.BigDecimal;
 import static de.codecentric.bootifytestpyramid.domain.WeightTemplates.ONE;
 import static de.codecentric.bootifytestpyramid.domain.WeightTemplates.TWO;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class WeightTest {
@@ -37,8 +38,10 @@ class WeightTest {
 
         @Test
         void should_throw_exception_when_passing_negative_value() {
-            assertThrows(IllegalArgumentException.class, () -> new Weight(BigDecimal.valueOf(-1)));
-            assertThrows(IllegalArgumentException.class, () -> new Weight(-1));
+            assertAll(
+                    () -> assertThrows(IllegalArgumentException.class, () -> new Weight(BigDecimal.valueOf(-1))),
+                    () -> assertThrows(IllegalArgumentException.class, () -> new Weight(-1))
+            );
         }
     }
 
@@ -74,9 +77,11 @@ class WeightTest {
 
         @Test
         void should_compare_to_other_weights() {
-            assertThat(ONE.compareTo(ONE)).isEqualTo(0);
-            assertThat(ONE.compareTo(TWO)).isLessThan(0);
-            assertThat(TWO.compareTo(ONE)).isGreaterThan(0);
+            assertAll(
+                    () -> assertThat(ONE.compareTo(ONE)).isEqualTo(0),
+                    () -> assertThat(ONE.compareTo(TWO)).isLessThan(0),
+                    () -> assertThat(TWO.compareTo(ONE)).isGreaterThan(0)
+            );
         }
     }
 }

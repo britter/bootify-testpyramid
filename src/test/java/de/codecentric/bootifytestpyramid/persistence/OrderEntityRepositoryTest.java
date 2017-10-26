@@ -25,6 +25,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
@@ -44,10 +45,12 @@ class OrderEntityRepositoryTest {
 
         List<OrderEntity> found = repository.findByDeliveryAddressCity("Düsseldorf");
 
-        assertThat(found).hasSize(1);
-        assertThat(found)
-                .element(0)
-                .hasFieldOrPropertyWithValue("id", shouldBeFound.getId());
+        assertAll(
+                () -> assertThat(found).hasSize(1),
+                () -> assertThat(found)
+                        .element(0)
+                        .hasFieldOrPropertyWithValue("id", shouldBeFound.getId())
+        );
     }
 
     private static OrderEntity orderIn(String city) {

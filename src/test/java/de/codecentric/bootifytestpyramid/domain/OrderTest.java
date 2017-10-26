@@ -27,6 +27,7 @@ import static de.codecentric.bootifytestpyramid.domain.OrderTemplates.smallOrder
 import static de.codecentric.bootifytestpyramid.domain.Price.germanPrice;
 import static java.util.Collections.emptyList;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class OrderTest {
@@ -46,8 +47,10 @@ class OrderTest {
 
         @Test
         void should_throw_exception_when_items_are_modified() {
-            assertThrows(UnsupportedOperationException.class, () -> smallOrder().getItems().clear());
-            assertThrows(UnsupportedOperationException.class, () -> smallOrder().getItems().add(chair()));
+            assertAll(
+                    () -> assertThrows(UnsupportedOperationException.class, () -> smallOrder().getItems().clear()),
+                    () -> assertThrows(UnsupportedOperationException.class, () -> smallOrder().getItems().add(chair()))
+            );
         }
     }
 
