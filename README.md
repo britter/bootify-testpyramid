@@ -1,5 +1,7 @@
 # bootify-testpyramid
 
+[![Build Status](https://travis-ci.org/britter/bootify-testpyramid.svg?branch=master)](https://travis-ci.org/britter/bootify-testpyramid)
+
 Welcome to bootify-testpyramid!
 
 ## Contribution policy
