@@ -36,6 +36,7 @@ import java.util.List;
 
 import static de.codecentric.bootifytestpyramid.domain.Price.germanPrice;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.springframework.http.HttpMethod.POST;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
@@ -67,8 +68,10 @@ class PriceCaluclationSystemIT {
 
         List<OrderEntity> orders = repository.findAll();
 
-        assertThat(orders).hasSize(1);
-        assertThat(orders.get(0).getDeliveryPrice()).isEqualTo(EXPECTED_DELIVERY_PRICE);
+        assertAll(
+                () -> assertThat(orders).hasSize(1),
+                () -> assertThat(orders.get(0).getDeliveryPrice()).isEqualTo(EXPECTED_DELIVERY_PRICE)
+        );
     }
 
 }
