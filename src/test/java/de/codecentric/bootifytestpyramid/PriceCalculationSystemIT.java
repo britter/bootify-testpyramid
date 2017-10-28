@@ -41,7 +41,7 @@ import static org.springframework.http.HttpMethod.POST;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @ExtendWith(SpringExtension.class)
-class PriceCaluclationSystemIT {
+class PriceCalculationSystemIT {
 
     private static final PriceEmbeddable EXPECTED_DELIVERY_PRICE = PriceEmbeddable.fromPrice(germanPrice(19.99));
 
