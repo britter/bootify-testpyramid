@@ -29,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
-class OrderEntityRepositoryTest {
+class OrderEntityRepositoryIT {
 
     @Autowired
     private TestEntityManager em;
