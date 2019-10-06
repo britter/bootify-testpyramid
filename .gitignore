@@ -1,39 +1,18 @@
-target/
-!.mvn/wrapper/maven-wrapper.jar
+### https://raw.github.com/github/gitignore/f2ce448f2ba7a092da05482ceca99209127c0884/Gradle.gitignore
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
+.gradle
+/build/
 
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
+# Ignore Gradle GUI config
+gradle-app.setting
 
-### NetBeans ###
-nbproject/private/
-build/
-nbbuild/
-dist/
-nbdist/
-.nb-gradle/### https://raw.github.com/github/gitignore/f2ce448f2ba7a092da05482ceca99209127c0884/maven.gitignore
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
 
-target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
-release.properties
-dependency-reduced-pom.xml
-buildNumber.properties
-.mvn/timing.properties
+# Cache of project
+.gradletasknamecache
 
-# Exclude maven wrapper
-!/.mvn/wrapper/maven-wrapper.jar
+# # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
+# gradle/wrapper/gradle-wrapper.properties
 
 
