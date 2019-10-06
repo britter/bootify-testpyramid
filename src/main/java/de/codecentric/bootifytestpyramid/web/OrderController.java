@@ -56,9 +56,9 @@ public class OrderController {
 
     @GetMapping
     public ResponseEntity<List<OrderResponse>> getAll(@RequestParam("city") Optional<String> city) {
-        List<Order> orders = city.map(orderGateway::findByCity).orElse(orderGateway.findAll());
+        var orders = city.map(orderGateway::findByCity).orElse(orderGateway.findAll());
 
-        List<OrderResponse> responses = orders.stream()
+        var responses = orders.stream()
                 .map(OrderResponse::new)
                 .collect(toList());
 
@@ -67,7 +67,7 @@ public class OrderController {
 
     @GetMapping("/{id}")
     public ResponseEntity<OrderResponse> getOne(@PathVariable("id") final Long id) {
-        Optional<Order> order = orderGateway.findById(id);
+        var order = orderGateway.findById(id);
 
         return order.map(OrderResponse::new).map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -77,7 +77,7 @@ public class OrderController {
     public ResponseEntity<?> create(@RequestBody @Valid final CreateOrderRequest createOrderRequest) {
         final Order created = orderGateway.createOrder(createOrderRequest.toCommand());
 
-        final URI location = fromMethodCall(on(OrderController.class).getOne(created.getId()))
+        var location = fromMethodCall(on(OrderController.class).getOne(created.getId()))
                 .build()
                 .toUri();
 

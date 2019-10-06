@@ -78,7 +78,7 @@ public final class Price {
     public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        final Price price = (Price) o;
+        var price = (Price) o;
         return Objects.equals(amount, price.amount) &&
                 Objects.equals(currency, price.currency) &&
                 Objects.equals(tax, price.tax);

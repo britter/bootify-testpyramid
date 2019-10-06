@@ -61,7 +61,7 @@ public final class Address {
     public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        final Address address = (Address) o;
+        var address = (Address) o;
         return Objects.equals(firstName, address.firstName) &&
                 Objects.equals(lastName, address.lastName) &&
                 Objects.equals(street, address.street) &&

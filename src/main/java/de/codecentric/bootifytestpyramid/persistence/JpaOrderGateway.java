@@ -65,9 +65,9 @@ public class JpaOrderGateway implements OrderGateway {
     public Order createOrder(final CreateOrderCommand createOrderCommand) {
         Objects.requireNonNull(createOrderCommand, "Parameter 'createOrderCommand' must not be null");
 
-        OrderEntity entity = createEntity(createOrderCommand);
+        var entity = createEntity(createOrderCommand);
         entity = orderEntityRepository.save(entity);
-        Order order = entity.toOrder();
+        var order = entity.toOrder();
         entity.setDeliveryPrice(PriceEmbeddable.fromPrice(order.calculateDeliveryPrice()));
         return order;
     }

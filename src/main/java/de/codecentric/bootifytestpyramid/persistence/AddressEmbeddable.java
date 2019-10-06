@@ -77,7 +77,7 @@ public class AddressEmbeddable {
     public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        final AddressEmbeddable that = (AddressEmbeddable) o;
+        var that = (AddressEmbeddable) o;
         return Objects.equals(firstName, that.firstName) &&
                 Objects.equals(lastName, that.lastName) &&
                 Objects.equals(street, that.street) &&

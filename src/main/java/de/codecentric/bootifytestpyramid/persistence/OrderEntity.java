@@ -101,7 +101,7 @@ public class OrderEntity {
     public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        final OrderEntity entity = (OrderEntity) o;
+        var entity = (OrderEntity) o;
         return Objects.equals(id, entity.id);
     }
 

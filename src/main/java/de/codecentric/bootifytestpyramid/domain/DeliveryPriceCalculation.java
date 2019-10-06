@@ -31,7 +31,7 @@ final class DeliveryPriceCalculation {
     }
 
     public static Price calculate(final Weight totalWeight) {
-        WeightClass weightClass = WeightClass.valueOf(totalWeight);
+        var weightClass = WeightClass.valueOf(totalWeight);
 
         switch (weightClass) {
             case UP_TO_100:

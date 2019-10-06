@@ -64,7 +64,7 @@ public class PriceEmbeddable {
     public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        final PriceEmbeddable that = (PriceEmbeddable) o;
+        var that = (PriceEmbeddable) o;
         return Objects.equals(amount, that.amount) &&
                 Objects.equals(currency, that.currency) &&
                 Objects.equals(tax, that.tax);

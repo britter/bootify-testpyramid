@@ -17,6 +17,7 @@ package de.codecentric.bootifytestpyramid.web;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import de.codecentric.bootifytestpyramid.domain.CreateOrderCommand;
+import de.codecentric.bootifytestpyramid.domain.CreateOrderCommand.CreateOrderItem;
 import de.codecentric.bootifytestpyramid.domain.OrderItem;
 import de.codecentric.bootifytestpyramid.domain.Price;
 import de.codecentric.bootifytestpyramid.domain.Weight;
@@ -57,8 +58,8 @@ final class OrderItemPart {
         this.quantity = orderItem.getQuantity();
     }
 
-    CreateOrderCommand.CreateOrderItem toCreateOrderItem() {
-        CreateOrderCommand.CreateOrderItem item = new CreateOrderCommand.CreateOrderItem();
+    CreateOrderItem toCreateOrderItem() {
+        var item = new CreateOrderItem();
         item.name = name;
         item.description = description;
         item.price = Price.germanPrice(price);

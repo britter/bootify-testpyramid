@@ -76,7 +76,7 @@ public final class OrderItem {
     public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        final OrderItem orderItem = (OrderItem) o;
+        var orderItem = (OrderItem) o;
         return id == orderItem.id &&
                 quantity == orderItem.quantity &&
                 Objects.equals(name, orderItem.name) &&

@@ -55,7 +55,7 @@ public final class Weight implements Comparable<Weight> {
     public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        final Weight weight = (Weight) o;
+        var weight = (Weight) o;
         return Objects.equals(value, weight.value);
     }
 

@@ -37,11 +37,11 @@ final class CreateOrderRequest {
     private List<OrderItemPart> items;
 
     CreateOrderCommand toCommand() {
-        CreateOrderCommand createOrderCommand = new CreateOrderCommand();
-        createOrderCommand.deliveryAddress = deliveryAddress.toAddress();
-        createOrderCommand.items = items.stream()
+        var command = new CreateOrderCommand();
+        command.deliveryAddress = deliveryAddress.toAddress();
+        command.items = items.stream()
                 .map(OrderItemPart::toCreateOrderItem)
                 .collect(toList());
-        return createOrderCommand;
+        return command;
     }
 }
