@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 plugins {
+    id("com.gradle.build-scan") version "2.4.2"
     java
     `java-test-fixtures`
 }
@@ -48,4 +49,11 @@ tasks {
     test {
         useJUnitPlatform()
     }
+}
+
+buildScan {
+    termsOfServiceUrl = "https://gradle.com/terms-of-service"
+    termsOfServiceAgree = "yes"
+
+    publishAlways()
 }
